@@ -16,9 +16,11 @@ var params = {
     var input = document.getElementById("bvhInput");
     input.addEventListener("change", function () {
       var file = input.files[0];
-      fname = "data/" + file.name;
+      fname = file.name;
+      f_src = URL.createObjectURL(file)
+      console.log(f_src);
       // update all controllers
-      loader.load(fname, function (result) {
+      loader.load(f_src, function (result) {
         bvhName.setValue(fname);
         scene.remove(skeletonHelper);
         scene.remove(boneContainer);
